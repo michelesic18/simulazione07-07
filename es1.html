@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="firstDiv">
+
+    </div>
+
+    <button id="btnMigliore">ordina per migliore</button>
+    <button id="btnPeggiore">ordina per peggiore</button>
+
+
+    <script>
+const student = [
+ {"id": 1, "fullname": "mario rossi", "avg": 6},
+ {"id": 2, "fullname": "luigi verdi", "avg": 4},
+ {"id": 3, "fullname": "peach pink", "avg": 8},
+ {"id": 4, "fullname": "wario rossi", "avg": 9},
+]
+
+const firstDiv = document.getElementById("firstDiv")
+const btnMigliore = document.getElementById("btnMigliore")
+const btnPeggiore = document.getElementById("btnPeggiore")
+
+newStudent = JSON.parse(JSON.stringify(student))
+
+btnMigliore.addEventListener("click", () =>{
+    const studentiMigliori = newStudent.slice().sort((a,b) => a.avg - b.avg)
+    
+})
+btnPeggiore.addEventListener("click", () =>{
+    const studentPeggiori = newStudent.slice().sort((a,b) => b.avg - a.avg)
+    
+})
+
+function studentiOrdinati(studenti) {
+    firstDiv.innerHTML= ""
+    studenti.forEach(studente => {
+        const div = document.createElement("div")
+        div.innerHTML= `id : ${studente.id}, fullname : ${studente.fullname}, avg : ${studente.avg}`
+        firstDiv.appendChild(div)
+    });
+
+    studentiOrdinati(newStudent)
+    
+}
+
+
+
+    </script>
+
+</body>
+</html>
